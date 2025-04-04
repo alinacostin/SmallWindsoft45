@@ -1,4 +1,4 @@
-﻿using BaseUtils;
+using BaseUtils;
 namespace Base.Logs
 {
     public static class Interpreter

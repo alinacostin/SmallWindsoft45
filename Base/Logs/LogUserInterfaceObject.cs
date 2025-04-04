@@ -1,4 +1,4 @@
-﻿namespace Base.Logs
+namespace Base.Logs
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Base</RootNamespace>
     <AssemblyName>Base</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -173,10 +173,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+      <HintPath>..\packages\Dapper.1.60.6\lib\net481\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="FluentFTP, Version=39.4.0.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentFTP.39.4.0\lib\net45\FluentFTP.dll</HintPath>
+      <HintPath>..\packages\FluentFTP.39.4.0\lib\net48\FluentFTP.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -189,10 +189,10 @@
       <HintPath>..\packages\Microsoft.Practices.ObjectBuilder.dll.3.1.0\lib\2.0\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Quintsys.Practices.EnterpriseLibrary.Data, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Quintsys.Practices.EnterpriseLibrary.Data.1.0.5.0\lib\net452\Quintsys.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\packages\Quintsys.Practices.EnterpriseLibrary.Data.1.0.5.0\lib\net482\Quintsys.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Quintsys.System, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Quintsys.System.1.0.5.0\lib\net452\Quintsys.System.dll</HintPath>
+      <HintPath>..\packages\Quintsys.System.1.0.5.0\lib\net482\Quintsys.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

@@ -1,0 +1,8 @@
+C:\_projects\myWindsoft\upgradetool\project\Base\bin\x86\Release\Base.dll.config
+C:\_projects\myWindsoft\upgradetool\project\Base\bin\x86\Release\Base.dll
+C:\_projects\myWindsoft\upgradetool\project\Base\bin\x86\Release\Base.pdb
+C:\_projects\myWindsoft\upgradetool\project\Base\obj\Release\Base.csproj.AssemblyReference.cache
+C:\_projects\myWindsoft\upgradetool\project\Base\obj\Release\Base.csproj.CoreCompileInputs.cache
+C:\_projects\myWindsoft\upgradetool\project\Base\obj\Release\Base.csproj.Up2Date
+C:\_projects\myWindsoft\upgradetool\project\Base\obj\Release\Base.dll
+C:\_projects\myWindsoft\upgradetool\project\Base\obj\Release\Base.pdb

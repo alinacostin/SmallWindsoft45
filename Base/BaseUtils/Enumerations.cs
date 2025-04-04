@@ -1,4 +1,4 @@
-﻿using Base.BaseUtils;
+using Base.BaseUtils;
 
 namespace BaseUtils
 {

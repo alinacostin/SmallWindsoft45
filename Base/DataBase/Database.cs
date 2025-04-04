@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
