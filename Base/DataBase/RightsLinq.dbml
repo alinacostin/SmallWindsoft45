@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Lex" Class="RightsLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=sqlsrv\sql2014I;Initial Catalog=DTO_WindNET_06.12.2016_Sile;Persist Security Info=True;User ID=sa2" SettingsObjectName="Base.Properties.Settings" SettingsPropertyName="LexConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Rights" Member="Rights">
+    <Type Name="Right">
+      <Column Name="RightId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RightName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RightPattern" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSpecialRight" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Right_UserEntityRight" Member="UserEntityRights" ThisKey="RightId" OtherKey="RightId" Type="UserEntityRight" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Modules" Member="Modules">
+    <Type Name="Module">
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Module_ModuleEntity" Member="ModuleEntities" ThisKey="ModuleId" OtherKey="ModuleId" Type="ModuleEntity" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleEntities" Member="ModuleEntities">
+    <Type Name="ModuleEntity">
+      <Column Name="ModuleEntityId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Module_ModuleEntity" Member="Module" ThisKey="ModuleId" OtherKey="ModuleId" Type="Module" IsForeignKey="true" />
+      <Association Name="Entity_ModuleEntity" Member="Entity" ThisKey="EntityId" OtherKey="EntityId" Type="Entity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntityTypes" Member="EntityTypes">
+    <Type Name="EntityType">
+      <Column Name="EntityTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntityTypeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EntityType_Entity" Member="Entities" ThisKey="EntityTypeId" OtherKey="EntityTypeId" Type="Entity" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Groups" Member="Groups">
+    <Type Name="Group">
+      <Column Name="Group_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Group_User" Member="Users" ThisKey="Group_ID" OtherKey="Group_ID" Type="User" />
+      <Association Name="Group_UserEntityRight" Member="UserEntityRights" ThisKey="Group_ID" OtherKey="GroupId" Type="UserEntityRight" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="User_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PersoaneContact_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Activ" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Group_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Filiala_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Password" Type="System.Data.Linq.Binary" DbType="Binary(16)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Group_User" Member="Group" ThisKey="Group_ID" OtherKey="Group_ID" Type="Group" IsForeignKey="true" />
+      <Association Name="Firme_Persoane_Contact_User" Member="Firme_Persoane_Contact" ThisKey="PersoaneContact_ID" OtherKey="PersoaneContact_ID" Type="Firme_Persoane_Contact" IsForeignKey="true" />
+      <Association Name="Filiale_User" Member="Filiale" ThisKey="Filiala_ID" OtherKey="Filiala_ID" Type="Filiale" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserEntityRights" Member="UserEntityRights">
+    <Type Name="UserEntityRight">
+      <Column Name="UserEntityRightId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RightId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Row_ID" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Group_UserEntityRight" Member="Group" ThisKey="GroupId" OtherKey="Group_ID" Type="Group" IsForeignKey="true" />
+      <Association Name="Right_UserEntityRight" Member="Right" ThisKey="RightId" OtherKey="RightId" Type="Right" IsForeignKey="true" />
+      <Association Name="Entity_UserEntityRight" Member="Entity" ThisKey="EntityId" OtherKey="EntityId" Type="Entity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Entities" Member="Entities">
+    <Type Name="Entity">
+      <Column Name="EntityId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntityName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="EntityTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Entity_ModuleEntity" Member="ModuleEntities" ThisKey="EntityId" OtherKey="EntityId" Type="ModuleEntity" />
+      <Association Name="Entity_UserEntityRight" Member="UserEntityRights" ThisKey="EntityId" OtherKey="EntityId" Type="UserEntityRight" />
+      <Association Name="EntityType_Entity" Member="EntityType" ThisKey="EntityTypeId" OtherKey="EntityTypeId" Type="EntityType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Firme_Persoane_Contact" Member="Firme_Persoane_Contacts">
+    <Type Name="Firme_Persoane_Contact">
+      <Column Name="PersoaneContact_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirmaPC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctiePC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumePC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SexPC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TelefonPC" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="AnulareTerti" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Filiala_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmailPC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="InitialePC" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Row_ID" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="Firme_Persoane_Contact_User" Member="Users" ThisKey="PersoaneContact_ID" OtherKey="PersoaneContact_ID" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Filiale" Member="Filiales">
+    <Type Name="Filiale">
+      <Column Name="Filiala_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Filiala" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Oras_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Prescurtare" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Adresa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Filiale_User" Member="Users" ThisKey="Filiala_ID" OtherKey="Filiala_ID" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationParameters" Member="ApplicationParameters">
+    <Type Name="ApplicationParameter">
+      <Column Name="ApplicationParameterId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParameterName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ParameterCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ParameterFormat" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParameterValue" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
